@@ -2,9 +2,12 @@ package com.travelapp.travel.service;
 
 import com.travelapp.travel.model.Result;
 import com.travelapp.travel.model.User;
+import com.travelapp.travel.model.UserExm;
 import com.travelapp.travel.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -50,5 +53,27 @@ public class UserService {
             result.setData("成功注册");
         }
         return result;
+    }
+
+
+    public User showUser(int uid){
+        User user;
+        user=userRepository.findById(uid).get();
+        return user;
+    }
+
+    public boolean updateUser(UserExm user){
+
+        Optional<User> optional=userRepository.findById(user.getUid());
+        if(optional.isPresent()){
+            User user1= optional.get();
+            user1.setUsername(user.getUsername());
+            user1.setPassword(user.getPassword());
+            user1.setHead(user.getHead());
+            userRepository.save(user1);
+            return true;
+        }
+
+        return false;
     }
 }

@@ -1,5 +1,6 @@
 package com.travelapp.travel.model;
 
+
 public class Result<T> {
     private String msg;
     private Boolean success;

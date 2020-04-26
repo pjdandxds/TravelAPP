@@ -1,40 +1,23 @@
 package com.travelapp.travel.model;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
-@Entity
-public class User {
-    @Id
-    @GeneratedValue
+public class UserExm {
     private int uid;
-
-
-
     private String username;
     private String password;
     private String head;
 
-
-    public User() {
-    }
-
-    public User(String username, String password) {
+    public UserExm(int uid, String username, String password, String head) {
+        this.uid = uid;
         this.username = username;
         this.password = password;
-    }
-
-    public User(String username, String password,String head) {
-        this.username = username;
-        this.password = password;
-        this.head=head;
+        this.head = head;
     }
 
     public int getUid() {
         return uid;
     }
 
-    public void setUid(int uida) {
+    public void setUid(int uid) {
         this.uid = uid;
     }
 
@@ -61,5 +44,4 @@ public class User {
     public void setHead(String head) {
         this.head = head;
     }
-
 }
